@@ -4,7 +4,7 @@ https://adventofcode.com/2024/day/1
 
 left_list = []
 right_list = []
-distance = 0
+similarity = 0
 
 with open("01_Historian_Hysteria/input.txt", "r", encoding="utf-8") as f:
     for line in f:
@@ -13,12 +13,11 @@ with open("01_Historian_Hysteria/input.txt", "r", encoding="utf-8") as f:
         left_list.append(splitted[0])
         right_list.append(splitted[1])
 
-left_list.sort()
-right_list.sort()
+# go through left list and search the count of same number in right list
 
 for i in range(len(left_list)):
     left = int(left_list[i])
-    right = int(right_list[i])
-    distance += abs(left-right)
+    number_count = right_list.count(left)
+    similarity += left * number_count
 
-print("Distance:", distance)
+print("Similarity:", similarity)
